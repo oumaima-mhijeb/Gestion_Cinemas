@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-md-5" style="margin-left:20px ">
+    <ul class="breadcrumb">
+      <li><a routerLink="/admin/cinema">AdminCinema</a></li>
+      <li><a href="#">Salles</a></li>
+    </ul>
+    <div class="panel panel-default">
+      <div class="panel-heading">Ajout Salle</div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="OnSaveSalle(f.value)">
+          <div class="form-group">
+            <label for="name">Salle Name</label>
+            <input type="text" [(ngModel)]="NomSalle" name="name" id="name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="name">Nombre de places</label>
+            <input type="text" [(ngModel)]="NombrePlace" name="nombrePlace" id="NombrePlace" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="name">Ville</label>
+            <select (change)="onVilleChange($event)" name="ville" class="form-control">
+              <option *ngFor="let ville of villes" [value]="ville.id">
+                {{ ville.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name">Cinema</label>
+            <!-- <option value="" disabled>Choose a city</option> -->
+            <select (change)="onCinemaChange($event)" ngModel name="cinema" class="form-control">
+              <option *ngFor="let cinema of cinemas" [value]="cinema.id">
+                {{ cinema.name }}
+              </option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit">save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">Recherche</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="name">Ville</label>
+            <select (change)="onVilleChange($event)" name="ville" class="form-control">
+              <option *ngFor="let ville of villes" [value]="ville.id">
+                {{ ville.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name">Cinema</label>
+            <!-- <option value="" disabled>Choose a city</option> -->
+            <select (change)="onSearchChange($event)" ngModel name="cinema" class="form-control">
+              <option *ngFor="let cinema of cinemas" [value]="cinema.id">
+                {{ cinema.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="Salles" class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">Salles</div>
+          <div class="panel-body">
+            <div class="container">
+              <table class="table " style="width: 596px;text-align: center;">
+                <thead>
+                <tr>
+                  <th style="text-align: center">Salles</th>
+                  <th style="text-align: center">NombrePlace</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let salle of Salles">
+                  <td>{{ salle.name }}</td>
+                  <td>{{ salle.nombrePlace }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

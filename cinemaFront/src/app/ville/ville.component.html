@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-6">
+    <ul class="breadcrumb">
+      <li><a routerLink="/admin/cinema">AdminCinema</a></li>
+      <li><a href="#">Ville</a></li>
+    </ul>
+    <div class="panel panel-default">
+      <div class="panel-heading">Ajout de villes</div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="onSaveVille(f.value)">
+          <div class="form-group">
+            <label for="name">Nom de la ville</label>
+            <input type="text" [(ngModel)]="Nomville" name="name" id="name" class="form-control">
+          </div>
+          <button class="btn btn-primary" type="submit">valider</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Recherche</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for=""> Recherche</label>
+          <input  [(ngModel)]="search" type="text" name="" id="" class="form-control" placeholder="Tapez le nom de la ville!">
+        </div>
+        <button (click)="onSearch()" class="btn btn-primary">chercher</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Ville</th>
+      <th>  </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let ville of villes">
+      <td>{{ ville.name }}</td>
+      <td style="text-align: right" >
+        <button class="glyphicon glyphicon-refresh btn alert-warning" (click)="onUpdateville(ville.id)">Modifier</button> |
+        <button class="glyphicon glyphicon-trash btn alert-danger" (click)="onDeleteville(ville.id)">Supprimer</button>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

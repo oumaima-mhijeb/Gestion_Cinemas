@@ -1,0 +1,13 @@
+.navigation{
+    background-color: #008B8B;
+    border: none;
+}
+.imgCinemaNav{
+    width: 70px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.CinemaTitleNav{
+    padding-top: 20px;
+    font-weight: bold;
+}

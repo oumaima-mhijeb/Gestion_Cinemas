@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-md-6">
+    <ul class="breadcrumb">
+      <li><a routerLink="/admin/cinema">AdminCinema</a></li>
+      <li><a href="#">Cinemas</a></li>
+    </ul>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Ajout Cinema
+        <button class="btn btn-primary glyphicon glyphicon-repeat" style="float: right;top: -9px;" (click)="toggleReset()"></button>
+      </div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="onSaveCinema(f.value)">
+          <div class="form-group">
+            <label for="name">Nom cinema</label>
+            <input type="text" [(ngModel)]="NomCinema" name="name" id="name" class="form-control">
+          </div>
+          <div class="form-group" >
+            <label for="name">Nombre de salles</label>
+            <input type="text" [(ngModel)]="nbreSalles" name="nombreSalles" id="nombreSalles" class="form-control">
+          </div>
+          <div class="form-group" *ngIf="isShow">
+            <label for="name">Ville</label>
+            <select name="ville" [(ngModel)]="Ville" class="form-control"  >
+              <option  *ngFor="let ville of villes" [value]="ville.id" >
+                {{ ville.name }}
+              </option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit">valider</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Recherche</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="name">Ville</label>
+          <select (change)="onSearchChange($event)" class="form-control">
+            <option [value]="ville.id" *ngFor="let ville of villes">
+              {{ ville.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <div *ngIf="cines">
+      <div class="panel panel-default">
+        <div class="panel-heading">Cinemas</div>
+        <div class="panel-body">
+
+            <div class="container">
+              <table class="table" style="width: 500px">
+                <thead>
+                <tr>
+                  <th>Cinema</th>
+                  <th>  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let cinema of cines">
+                  <td>{{ cinema.name }}</td>
+                  <td style="text-align: right" >
+                    <button class="btn alert-warning glyphicon glyphicon-edit" style="margin-right: 10px" (click)="onUpdateCinema(cinema.id)"></button>
+                    <button class="btn alert-danger glyphicon glyphicon-trash" (click)="onDeleteCinema(cinema.id)"></button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

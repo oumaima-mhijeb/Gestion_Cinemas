@@ -1,0 +1,27 @@
+.clickable{
+  cursor: pointer ;
+}
+.ticket{
+  margin: 5px;
+  width: 40px;
+}
+.cinemasName{
+border: 1px solid #ccc;
+  margin: 5px;
+  color:black;
+}
+.cinemasName:active{
+  color:white;
+}
+.listeCinemas{
+  background-color: #B0E0E6;
+  font-weight: bold;
+  border: none;
+}
+.salleStyle{
+  background-color: #ebfafa;
+  font-weight: bold;
+}
+.marginTop{
+  margin-top: 20px;
+}
